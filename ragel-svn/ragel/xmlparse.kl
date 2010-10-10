@@ -101,6 +101,10 @@ tag_ragel_head: TAG_ragel
 			hostLang = &hostLangCSharp;
 			outStream = csharpOpenOutput( sourceFileName );
 		}
+		else if ( strcmp( langAttr->value, "JavaScript" ) == 0) {
+			hostLang = &hostLangJavaScript;
+			outStream = javaScriptOpenOutput ( sourceFileName );
+		}
 		else {
 			error($1->loc) << "expecting lang attribute to be "
 					"one of C, D, Java, Ruby or C#" << endp;

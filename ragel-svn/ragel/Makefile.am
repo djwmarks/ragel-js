@@ -20,7 +20,8 @@ ragel_SOURCES = \
 	cdipgoto.cpp cdsplit.cpp javacodegen.cpp rubycodegen.cpp rubytable.cpp \
 	rubyftable.cpp rubyflat.cpp rubyfflat.cpp rbxgoto.cpp cscodegen.cpp \
 	cstable.cpp csftable.cpp csflat.cpp csfflat.cpp csgoto.cpp csfgoto.cpp \
-	csipgoto.cpp cssplit.cpp dotcodegen.cpp xmlcodegen.cpp goipgoto.cpp
+	csipgoto.cpp cssplit.cpp dotcodegen.cpp xmlcodegen.cpp goipgoto.cpp \
+	jscodegen.h jscodegen.cpp jstable.h jstable.cpp
 
 BUILT_SOURCES = \
 	rlscan.cpp rlparse.h rlparse.cpp version.h

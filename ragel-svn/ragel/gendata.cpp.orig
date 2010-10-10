@@ -57,8 +57,6 @@
 #include "rubyfflat.h"
 #include "rbxgoto.h"
 
-#include "jstable.h"
-
 string itoa( int i )
 {
 	char buf[16];
@@ -267,23 +265,6 @@ CodeGenData *csharpMakeCodeGen( const char *sourceFileName, const char *fsmName,
 	return codeGen;
 }
 
-CodeGenData *javaScriptMakeCodeGen( const char *sourceFileName, const char *fsmName, ostream &out )
-{
-	CodeGenData *codeGen = 0;
-	switch ( codeStyle ) {
-		case GenTables: 
-			codeGen = new JSTabCodeGen(out);
-			break;
-		default:
-			cout << "Invalid code style\n";
-			exit(1);
-			break;
-	}
-	codeGen->sourceFileName = sourceFileName;
-	codeGen->fsmName = fsmName;
-
-	return codeGen;
-}
 
 CodeGenData *makeCodeGen( const char *sourceFileName, const char *fsmName, ostream &out )
 {
@@ -302,8 +283,6 @@ CodeGenData *makeCodeGen( const char *sourceFileName, const char *fsmName, ostre
 		cgd = rubyMakeCodeGen( sourceFileName, fsmName, out );
 	else if ( hostLang == &hostLangCSharp )
 		cgd = csharpMakeCodeGen( sourceFileName, fsmName, out );
-	else if ( hostLang == &hostLangJavaScript )
-		cgd = javaScriptMakeCodeGen( sourceFileName, fsmName, out );
 	return cgd;
 }
 
@@ -322,8 +301,6 @@ void lineDirective( ostream &out, const char *fileName, int line )
 			rubyLineDirective( out, fileName, line );
 		else if ( hostLang == &hostLangCSharp )
 			csharpLineDirective( out, fileName, line );
-		else if ( hostLang == &hostLangJavaScript )
-		        jsLineDirective( out, fileName, line );
 	}
 }
 

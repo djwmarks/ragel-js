@@ -114,18 +114,12 @@ HostType hostTypesCSharp[] =
 	{ "ulong",   0,  "ulong",   false,  0,         ULONG_MAX,   8 }
 };
 
-HostType hostTypesJavaScript[] = 
-{
-	{ "Number",     0,  "Number",    true,   -2147483648,   2147483648,     4 }
-};
-
 HostLang hostLangC =    { HostLang::C,    hostTypesC,    8, hostTypesC+0,    true };
 HostLang hostLangD =    { HostLang::D,    hostTypesD,    9, hostTypesD+2,    true };
 HostLang hostLangGo =   { HostLang::Go,   hostTypesGo,   7, hostTypesGo+0,   false };
 HostLang hostLangJava = { HostLang::Java, hostTypesJava, 4, hostTypesJava+2, false };
 HostLang hostLangRuby = { HostLang::Ruby, hostTypesRuby, 2, hostTypesRuby+0, false };
 HostLang hostLangCSharp = { HostLang::CSharp, hostTypesCSharp, 9, hostTypesCSharp+4, true };
-HostLang hostLangJavaScript = { HostLang::JavaScript, hostTypesJavaScript, 1, hostTypesJavaScript+0, false };
 
 HostLang *hostLang = &hostLangC;
 
