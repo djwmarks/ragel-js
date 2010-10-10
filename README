@@ -2,21 +2,23 @@ Message sent to nodejs@googlegroups.com.
 ===
 Hi all,
 
-Ragel and Node sounded like a combination too attractive to not have.
-I've produced an alpha-quality patch to add JavaScript code generation
-to Ragel. I've duplicated the Ruby code generation backend since it is
-the only other scripting language Ragel supports and that seemed a
-sensible idea. At present it only supports the most basic table code
-generation strategy and it's only received the mildest testing from me.
+Ragel and Node sounded like a combination too attractive to ignore. I've produced an alpha-quality patch to add JavaScript code generation to Ragel. I've duplicated the Ruby code generation backend, since it is the only other scripting language Ragel supports at present. The patch only provides the most table code generation strategy and it's only received the most basic testing by me.
 
-If anyone would like to help me get this patch ship-shape before I
-submit it to the Ragel developers I'd be most grateful. The patch as is
-needs C++ code review and lots of JavaScript-emitting RL files for
-testing purposes. There are tons of freely available RL files for all
-sorts of interesting formats and protocols on the net and reworking them
-to produce JS is normally straightforward. The diff includes a sample
-Node script (examples/mailbox-js.rl) which implemets an mbox parser.
-That may be helping in seeing how RL files are put together. If not
-Ragel has an excellent manual document that covers more or less everything.
+If anyone would like to help me get this patch ship-shape before I submit it to the Ragel developers I'd be most grateful. The patch needs C++ code review and most of all, lots of JavaScript-emitting RL files for testing purposes.
 
-This seems to work nicely enough for me with the sample mailbox I fed it.
+There are tons of freely available RL files for all sorts of interesting formats and protocols on the net and reworking them for JavaScript should be fairly straightforward. The patch includes a sample Node-using  JavaScript (examples/mailbox-js.rl) which implements an mbox parser. The sample script itself needs a bit of tidying up since its a bit ragged. Ragel also comes with a large number of examples and has an excellent manual that covers more or less everything.
+
+Once the bugs have been worked out the fun bit is designing a JavaScript code generator that gets the most out of modern JS VMs (e.g. V8).
+
+I figure git is the most effective way to collaborate on this, so I've cloned Ragel's svn trunk into a github repo and applied my patch to it. I've no experience with git though so it took me a little while to get it into github.
+
+http://github.com/dominicmarks/ragel-js
+
+If you want to see what a Ragel-compiled state machine looks like in JavaScript (it isn't art) you can find the generated mbox parser here:
+
+http://goodforbusiness.co.uk/~dom/mailbox.js
+
+Hopefully we can have solid JavaScript support in the next release of Ragel.
+
+Cheers,
+Dom 
