@@ -113,9 +113,9 @@
 //
 %% variable data data;
 
-const BUFSIZE = 2048;
-
 function Mailbox(outStream) {
+  const BUFSIZE = 2048;
+
   this.headerBytes = 0;
   this.header = new Buffer(BUFSIZE);
 
@@ -124,20 +124,8 @@ function Mailbox(outStream) {
 
   this.outStream = outStream;
 
-  // %% write init;
-
-  /* TODO XXX
-   * This should be using %% write init.
-   *
-   * For reasons I haven't explored yet, write init wants to assign the
-   * p and pe variables. In particular, it wants to assign pe to the value
-   * of data.length. This doesn't exist yet (see .execute()). To work
-   * around this implement %% write init by other means until I've decided
-   * which part of the software is to blame.
-   */
-  this.top = 0;
   this.stack = [];
-  this.cs = MailboxScanner_start;
+  %% write init;
 }
 
 Mailbox.prototype.appendHeader = function(byte) {
@@ -151,12 +139,9 @@ Mailbox.prototype.appendContent = function(byte) {
 };
 
 Mailbox.prototype.execute = function(data) {
-  /*
-   * See TODO above.
-   */
   var p = 0;
   var pe = data.length;
-  var eof = pe;
+  var eof = 0;
 
   %% write exec;
 

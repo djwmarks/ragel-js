@@ -759,10 +759,6 @@ unsigned int JSCodeGen::arrayTypeSize( unsigned long maxVal )
 void JSCodeGen::writeInit()
 {
 	out << "{\n";
-	out << "	 " << P() << " = " << P() << " || 0;\n";
-
-	if ( !noEnd ) 
-		out << "	 " << PE() << " = " << PE() << " || " << DATA() << ".length;\n";
 
 	if ( !noCS )
 		out << "	 " << vCS() << " = " << START() << ";\n";
@@ -778,7 +774,7 @@ void JSCodeGen::writeInit()
 			"	 " << ACT() << " = 0;\n";
 	}
 
-	out << "}\n";
+	out << "} /* JSCodeGen::writeInit */\n";
 }
 
 void JSCodeGen::writeExports()
