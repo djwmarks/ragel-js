@@ -89,7 +89,6 @@ protected:
 	string ERROR() { return DATA_PREFIX() + "error"; }
 	string FIRST_FINAL() { return DATA_PREFIX() + "first_final"; }
 	string CTXDATA() { return DATA_PREFIX() + "ctxdata"; }
-	string CONSTIFY( string name ) { return "const " + name; }
 
 public:
 	string NULL_ITEM();

@@ -911,85 +911,85 @@ void JSTabCodeGen::writeData()
 	/* If there are any transtion functions then output the array. If there
 	 * are none, don't bother emitting an empty array that won't be used. */
 	if ( redFsm->anyActions() ) {
-		OPEN_ARRAY( ARRAY_TYPE(redFsm->maxActArrItem), CONSTIFY(A()) );
+		OPEN_ARRAY( ARRAY_TYPE(redFsm->maxActArrItem), "const " + A() );
 		ACTIONS_ARRAY();
 		CLOSE_ARRAY() <<
 		"\n";
 	}
 
 	if ( redFsm->anyConditions() ) {
-		OPEN_ARRAY( ARRAY_TYPE(redFsm->maxCondOffset), CONSTIFY(CO()) );
+		OPEN_ARRAY( ARRAY_TYPE(redFsm->maxCondOffset), "const " + CO() );
 		COND_OFFSETS();
 		CLOSE_ARRAY() <<
 		"\n";
 
-		OPEN_ARRAY( ARRAY_TYPE(redFsm->maxCondLen), CONSTIFY(CL()) );
+		OPEN_ARRAY( ARRAY_TYPE(redFsm->maxCondLen), "const "+ CL() );
 		COND_LENS();
 		CLOSE_ARRAY() <<
 		"\n";
 
-		OPEN_ARRAY( WIDE_ALPH_TYPE(), CONSTIFY(CK()) );
+		OPEN_ARRAY( WIDE_ALPH_TYPE(), "const " + CK() );
 		COND_KEYS();
 		CLOSE_ARRAY() <<
 		"\n";
 
-		OPEN_ARRAY( ARRAY_TYPE(redFsm->maxCondSpaceId), CONSTIFY(C()) );
+		OPEN_ARRAY( ARRAY_TYPE(redFsm->maxCondSpaceId), "const " + C() );
 		COND_SPACES();
 		CLOSE_ARRAY() <<
 		"\n";
 	}
 
-	OPEN_ARRAY( ARRAY_TYPE(redFsm->maxKeyOffset), CONSTIFY(KO()) );
+	OPEN_ARRAY( ARRAY_TYPE(redFsm->maxKeyOffset), "const " + KO() );
 	KEY_OFFSETS();
 	CLOSE_ARRAY() <<
 	"\n";
 
-	OPEN_ARRAY( WIDE_ALPH_TYPE(), CONSTIFY(K()) );
+	OPEN_ARRAY( WIDE_ALPH_TYPE(), "const " + K() );
 	KEYS();
 	CLOSE_ARRAY() <<
 	"\n";
 
-	OPEN_ARRAY( ARRAY_TYPE(redFsm->maxSingleLen), CONSTIFY(SL()) );
+	OPEN_ARRAY( ARRAY_TYPE(redFsm->maxSingleLen), "const " + SL() );
 	SINGLE_LENS();
 	CLOSE_ARRAY() <<
 	"\n";
 
-	OPEN_ARRAY( ARRAY_TYPE(redFsm->maxRangeLen), CONSTIFY(RL()) );
+	OPEN_ARRAY( ARRAY_TYPE(redFsm->maxRangeLen), "const " + RL() );
 	RANGE_LENS();
 	CLOSE_ARRAY() <<
 	"\n";
 
-	OPEN_ARRAY( ARRAY_TYPE(redFsm->maxIndexOffset), CONSTIFY(IO()) );
+	OPEN_ARRAY( ARRAY_TYPE(redFsm->maxIndexOffset), "const " + IO() );
 	INDEX_OFFSETS();
 	CLOSE_ARRAY() <<
 	"\n";
 
 	if ( useIndicies ) {
-		OPEN_ARRAY( ARRAY_TYPE(redFsm->maxIndex), CONSTIFY(I()) );
+		OPEN_ARRAY( ARRAY_TYPE(redFsm->maxIndex), "const " + I() );
 		INDICIES();
 		CLOSE_ARRAY() <<
 		"\n";
 
-		OPEN_ARRAY( ARRAY_TYPE(redFsm->maxState), CONSTIFY(TT()) );
+		OPEN_ARRAY( ARRAY_TYPE(redFsm->maxState), "const " + TT() );
 		TRANS_TARGS_WI();
 		CLOSE_ARRAY() <<
 		"\n";
 
 		if ( redFsm->anyActions() ) {
-			OPEN_ARRAY( ARRAY_TYPE(redFsm->maxActionLoc), CONSTIFY(TA()) );
+			OPEN_ARRAY( ARRAY_TYPE(redFsm->maxActionLoc), "const " + TA() );
 			TRANS_ACTIONS_WI();
 			CLOSE_ARRAY() <<
 			"\n";
 		}
 	}
 	else {
-		OPEN_ARRAY( ARRAY_TYPE(redFsm->maxState), CONSTIFY(TT()) );
+		OPEN_ARRAY( ARRAY_TYPE(redFsm->maxState), "const " + TT() );
 		TRANS_TARGS();
 		CLOSE_ARRAY() <<
 		"\n";
 
 		if ( redFsm->anyActions() ) {
-			OPEN_ARRAY( ARRAY_TYPE(redFsm->maxActionLoc), CONSTIFY(TA()) );
+			OPEN_ARRAY( ARRAY_TYPE(redFsm->maxActionLoc), "const " + TA() );
 			TRANS_ACTIONS();
 			CLOSE_ARRAY() <<
 			"\n";
@@ -997,28 +997,28 @@ void JSTabCodeGen::writeData()
 	}
 
 	if ( redFsm->anyToStateActions() ) {
-		OPEN_ARRAY( ARRAY_TYPE(redFsm->maxActionLoc), CONSTIFY(TSA()) );
+		OPEN_ARRAY( ARRAY_TYPE(redFsm->maxActionLoc), "const " + TSA() );
 		TO_STATE_ACTIONS();
 		CLOSE_ARRAY() <<
 		"\n";
 	}
 
 	if ( redFsm->anyFromStateActions() ) {
-		OPEN_ARRAY( ARRAY_TYPE(redFsm->maxActionLoc), CONSTIFY(FSA()) );
+		OPEN_ARRAY( ARRAY_TYPE(redFsm->maxActionLoc), "const " + FSA() );
 		FROM_STATE_ACTIONS();
 		CLOSE_ARRAY() <<
 		"\n";
 	}
 
 	if ( redFsm->anyEofActions() ) {
-		OPEN_ARRAY( ARRAY_TYPE(redFsm->maxActionLoc), CONSTIFY(EA()) );
+		OPEN_ARRAY( ARRAY_TYPE(redFsm->maxActionLoc), "const " + EA() );
 		EOF_ACTIONS();
 		CLOSE_ARRAY() <<
 		"\n";
 	}
 
 	if ( redFsm->anyEofTrans() ) {
-		OPEN_ARRAY( ARRAY_TYPE(redFsm->maxIndexOffset+1), CONSTIFY(ET()) );
+		OPEN_ARRAY( ARRAY_TYPE(redFsm->maxIndexOffset+1), "const " + ET() );
 		EOF_TRANS();
 		CLOSE_ARRAY() <<
 		"\n";

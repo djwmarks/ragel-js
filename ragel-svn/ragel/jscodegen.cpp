@@ -404,19 +404,19 @@ std::ostream &JSCodeGen::ACTIONS_ARRAY()
 void JSCodeGen::STATE_IDS()
 {
 	if ( redFsm->startState != 0 )
-		STATIC_VAR( "int", CONSTIFY(START()) ) << " = " << START_STATE_ID() << ";\n";
+		STATIC_VAR( "int", "const " + START() ) << " = " << START_STATE_ID() << ";\n";
 
 	if ( !noFinal )
-		STATIC_VAR( "int" , CONSTIFY(FIRST_FINAL()) ) << " = " << FIRST_FINAL_STATE() << ";\n";
+		STATIC_VAR( "int" , "const " + FIRST_FINAL() ) << " = " << FIRST_FINAL_STATE() << ";\n";
 
 	if ( !noError )
-		STATIC_VAR( "int", CONSTIFY(ERROR()) ) << " = " << ERROR_STATE() << ";\n";
+		STATIC_VAR( "int", "const " + ERROR() ) << " = " << ERROR_STATE() << ";\n";
 
 	out << "\n";
 
 	if ( entryPointNames.length() > 0 ) {
 		for ( EntryNameVect::Iter en = entryPointNames; en.lte(); en++ ) {
-			STATIC_VAR( "int", CONSTIFY(DATA_PREFIX() + "en_" + *en) ) << 
+			STATIC_VAR( "int", "const " + DATA_PREFIX() + "en_" + *en )  << 
 					" = " << entryPointIds[en.pos()] << ";\n";
 		}
 		out << "\n";
