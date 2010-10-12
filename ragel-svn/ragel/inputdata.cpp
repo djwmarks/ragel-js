@@ -80,10 +80,10 @@ void InputData::rubyDefaultFileName( const char *inputFile )
 		outputFileName = fileNameFromStem( inputFile, ".rb" );
 }
 
-/* Invoked by the parser when the root element is opened. */
+/* invoked by the parser when the root element is opened. */
 void InputData::csharpDefaultFileName( const char *inputFile )
 {
-	/* If the output format is code and no output file name is given, then
+	/* if the output format is code and no output file name is given, then
 	 * make a default. */
 	if ( outputFileName == 0 ) {
 		const char *ext = findFileExtension( inputFile );
@@ -92,6 +92,16 @@ void InputData::csharpDefaultFileName( const char *inputFile )
 		else
 			outputFileName = fileNameFromStem( inputFile, ".cs" );
 	}
+}
+
+/* invoked by the parser when the root element is opened. */
+void InputData::javaScriptDefaultFileName( const char *inputFile )
+{
+	/* if the output format is code and no output file name is given, then
+	 * make a default. */
+	if ( outputFileName == 0 )
+                outputFileName = fileNameFromStem( inputFile, ".js" );
+	
 }
 
 void InputData::makeOutputStream()
@@ -114,6 +124,9 @@ void InputData::makeOutputStream()
 			case HostLang::CSharp:
 				csharpDefaultFileName( inputFileName );
 				break;
+                        case HostLang::JavaScript:
+                                javaScriptDefaultFileName( inputFileName );
+                                break;
 		}
 	}
 
