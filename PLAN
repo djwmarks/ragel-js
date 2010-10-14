@@ -1,0 +1,21 @@
+Things to investigate:
+
+ 1. Can we arrange so that Ragel for JavaScript operates on unicode
+    strings. This would avoid the conversion to bytes which is slow
+    and would make the output code more portable since there is no
+    standardised 'ByteArray' object at the moment.
+
+ 2. Can we use Ragel to generate code that uses the JavaScript builtin
+    objects and their functions rather than processing the input one
+    byte at a time. This is important for code size and performance.
+    When I write parsers by hand in JavaScript I try to use indexOf
+    and match as much as possible so that I avoid looking at every
+    character. The more you can offload to the regular expression
+    engine the better since more execution occurs in 'native-land'.
+    The irregexp engine that V8 uses is JIT compiled on the same engine
+    as our JavaScript so getting access to this is going to be the key
+    for near-native speed Ragel parsing. My instincts tell me that all
+    of the information for composing a parser similar to those I would
+    hand-write lies within the grammar definition. Therefore, it should
+    be possible to achieve similar code from Ragel. This is a departure
+    from the Ragel code generators I've looked at so far.
