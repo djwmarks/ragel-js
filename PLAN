@@ -19,3 +19,7 @@ Things to investigate:
     hand-write lies within the grammar definition. Therefore, it should
     be possible to achieve similar code from Ragel. This is a departure
     from the Ragel code generators I've looked at so far.
+
+ 3. Also worth checking out:
+
+http://weblogs.mozillazine.org/roc/archives/2010/11/implementing_a.html
